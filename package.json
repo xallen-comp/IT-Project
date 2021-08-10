@@ -1,0 +1,22 @@
+{
+  "name": "it-project",
+  "version": "1.0.0",
+  "description": "website for client",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xallen-comp/IT-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xallen-comp/IT-Project/issues"
+  },
+  "homepage": "https://github.com/xallen-comp/IT-Project#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
