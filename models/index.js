@@ -1,3 +1,4 @@
+//code adapted from WEBINFO
 require('dotenv').config()
 const mongoose = require("mongoose")
 // Connect to MongoDB - database login is retrieved from environment variables - YOU SHOULD
@@ -21,3 +22,4 @@ db.once("open", async () => {
  console.log("Mongo connection started on " + db.host + ":" + db.port)
 })
 require('./client');
+require('./event');

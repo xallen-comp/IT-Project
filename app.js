@@ -6,7 +6,17 @@
 //indent
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 require('./models');
+
+const clientRouter = require('./routes/clientRouter');
+const eventRouter = require('./routes/eventRouter');
+
+// handler for clients
+app.use('/', clientRouter);
+// handler for events
+app.use('/', eventRouter);
 
 app.get('/', (req, res) =>{
 	res.send('<h1>Website</h1>');
