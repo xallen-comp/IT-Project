@@ -4,10 +4,11 @@ const express = require('express')
 const clientRouter = express.Router()
 const clientController = require('../controllers/clientController')
 
-clientRouter.get('/clients', clientController.getAllClients);
-clientRouter.get('/clients/:clientId', clientController.getOneClient);
+clientRouter.get('/', clientController.getAllClients);
+clientRouter.get('/:clientId', clientController.getOneClient);
 
-clientRouter.post('/clients/add', clientController.addClient);
+clientRouter.post('/add', clientController.addClient);
+clientRouter.post('/:clientId/update', clientController.updateClient)
 
 // export the router
 module.exports = clientRouter

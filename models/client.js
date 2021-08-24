@@ -1,9 +1,11 @@
 const mongoose = require("mongoose")
 
 const clientSchema = new mongoose.Schema({
-	clientId: String, 
+	clientId: String,
 	name: String, 
-	comments: String
+	comments: String,
+	email: String, 
+	projects: [String]
 })
 
 const Client = mongoose.model("Client", clientSchema)

@@ -14,9 +14,9 @@ const clientRouter = require('./routes/clientRouter');
 const eventRouter = require('./routes/eventRouter');
 
 // handler for clients
-app.use('/', clientRouter);
+app.use('/clients', clientRouter);
 // handler for events
-app.use('/', eventRouter);
+app.use('/events', eventRouter);
 
 app.get('/', (req, res) =>{
 	res.send('<h1>Website</h1>');
