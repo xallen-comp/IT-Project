@@ -12,12 +12,19 @@ For running locally update index.js with appropriate database access then run wi
 # Routes
 
 GET all clients: https://search-it-project.herokuapp.com/clients
+
 GET all events: https://search-it-project.herokuapp.com/events
+
 GET a specific client: https://search-it-project.herokuapp.com/clients/:clientId
+
 GET a specific event: https://search-it-project.herokuapp.com/events/:eventId
+
 POST add client: https://search-it-project.herokuapp.com/clients/add and then JSON object
+
 POST add event: https://search-it-project.herokuapp.com/events/add and then JSON object
+
 POST update event: https://search-it-project.herokuapp.com/events/update and then JSON object
+
 POST update client: https://search-it-project.herokuapp.com/clients/update and then JSON object
 
 
