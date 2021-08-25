@@ -9,6 +9,15 @@ Server: https://search-it-project.herokuapp.com
 
 For running locally update index.js with appropriate database access then run with node app.js
 
+
+
+## Technologies
+Project is created with:
+* NodeJs 14.16.X
+* Heroku 
+* MongoDB
+* React 
+
 # Routes
 
 GET all clients: https://search-it-project.herokuapp.com/clients
@@ -26,6 +35,14 @@ POST add event: https://search-it-project.herokuapp.com/events/add and then JSON
 POST update event: https://search-it-project.herokuapp.com/events/update and then JSON object
 
 POST update client: https://search-it-project.herokuapp.com/clients/update and then JSON object
+
+
+**Tasks**
+
+- [ ] Inception Checklist 
+- [ ] First Sprint Checklist
+- [ ] Second Sprint Checklist
+- [ ] Team Presentation
 
 
 
