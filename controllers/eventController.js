@@ -31,16 +31,27 @@ const getOneEvent = async (req, res) => {
 //add client to the database
 const addEvent = (req, res) => {
     console.log(req.body)
+    const title = req.body.title
     const type = req.body.type
     const description = req.body.description 
-    const start = Date.now()
-    const end = Date.now()
+    const start_time = req.body.start_time 
+    const end_time = req.body.end_time 
+    const colour = req.body.colour
+    const reminder = req.body.reminder
+    const importance = req.body.importance
+    const contacts = req.body.contacts
+    
 
     const newEvent = new Event({
+        title,
         type,
         description,
-        start,
-        end 
+        start_time,
+        end_time,
+        colour,
+        reminder,
+        importance,
+        contacts
     });
 
     newEvent.save()
@@ -53,10 +64,15 @@ const updateEvent= async (req, res) => {
      try {
     const oneEvent = await Event.findOne( {"eventId": req.params.id})
     const update = {
+        title: req.body.title,
         type: req.body.type,
         description: req.body.description,
-        start: Date.now(),
-        end: Date.now()
+        start_time: req.body.start_time,
+        end_time: req.body.end_time,
+        colour: req.body.colour,
+        reminder: req.body.reminder,
+        importance: req.body.importance,
+        contacts: req.body.contacts
     }
     await oneEvent.updateOne(update)
     return res.send("Updated event") // event was found and updated 
