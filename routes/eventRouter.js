@@ -4,11 +4,22 @@ const express = require('express')
 const eventRouter = express.Router()
 const eventController = require('../controllers/eventController')
 
+//CREATE ----------------------------------------------------------
+
+eventRouter.post('/add', eventController.addEvent);
+
+//READ ----------------------------------------------------------
+
 eventRouter.get('/', eventController.getAllEvents);
 eventRouter.get('/:eventId', eventController.getOneEvent);
 
-eventRouter.post('/add', eventController.addEvent);
+//UPDATE ----------------------------------------------------------
+
 eventRouter.post('/:eventId/update', eventController.updateEvent);
+
+//DELETE ----------------------------------------------------------
+
+
 
 // export the router
 module.exports = eventRouter

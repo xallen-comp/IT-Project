@@ -4,11 +4,25 @@ const express = require('express')
 const contactRouter = express.Router()
 const contactController = require('../controllers/contactController')
 
-clientRouter.get('/', contactController.getAllContacts);
-clientRouter.get('/:contactId', contactController.getOneContact);
+//CREATE ----------------------------------------------------------
 
-clientRouter.post('/add', contactController.addContact);
-clientRouter.post('/:contactId/update', contactController.updateContact)
+contactRouter.post('/add', contactController.addContact);
+
+//READ ------------------------------------------------------------
+
+contactRouter.get('/', contactController.getAllContacts);
+contactRouter.get('/:contactId', contactController.getOneContact);
+
+//UPDATE ----------------------------------------------------------
+
+contactRouter.post('/:contactId/update', contactController.updateContact)
+
+
+//DELETE ----------------------------------------------------------
+
+
+
+
 
 // export the router
 module.exports = contactRouter
