@@ -10,11 +10,11 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 require('./models');
 
-const clientRouter = require('./routes/clientRouter');
+const contactRouter = require('./routes/contactRouter');
 const eventRouter = require('./routes/eventRouter');
 
 // handler for clients
-app.use('/clients', clientRouter);
+app.use('/contacts', contactRouter);
 // handler for events
 app.use('/events', eventRouter);
 
