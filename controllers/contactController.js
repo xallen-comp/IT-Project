@@ -37,7 +37,6 @@ const addContact = (req, res) => {
     const email = req.body.email
     const occupation = req.body.occupation
     const phone = req.body.phone
-    const comments = req.body.comments
     const events = req.body.events
     const mutual_friends = req.body.mutual_friends
     const photo = req.body.photo
