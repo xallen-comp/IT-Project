@@ -15,7 +15,7 @@ const getAllContacts = async (req, res) => {
 // find one Contact by their id
 const getOneContact = async (req, res) => {
  try {
- const oneContact = await Contact.findOne( {"contactId": req.params.id})
+ const oneContact = await Contact.findById(req.params.contactId);
  if (oneContact === null) { 
      // no Contact found in database
     res.status(404)
@@ -25,6 +25,7 @@ const getOneContact = async (req, res) => {
  } 
  catch (err) { // error occurred
     res.status(400)
+    console.log(err);
     return res.send("Database query failed")
  }
 }

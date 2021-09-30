@@ -16,7 +16,7 @@ const getAllEvents = async (req, res) => {
 // find one client by their id
 const getOneEvent = async (req, res) => {
  try {
- const oneEvent = await Event.findOne( {"eventId": req.params.id})
+ const oneEvent = await Event.findById(req.params.eventId);
  if (oneEvent === null) { // no client found in database
  res.status(404)
  return res.send("Event not found")
