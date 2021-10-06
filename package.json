@@ -4,7 +4,7 @@
   "description": "website for client",
   "main": "app.js",
   "scripts": {
-    "test": "mocha",
+    "test": "cypress open",
     "start": "node app.js"
   },
   "repository": {
