@@ -6,7 +6,6 @@
   "scripts": {
     "test": "mocha",
     "start": "node app.js"
-    "build": "CI=false&&build",
   },
   "repository": {
     "type": "git",
