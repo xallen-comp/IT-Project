@@ -31,15 +31,15 @@ const getOneEvent = async (req, res) => {
 //add client to the database
 const addEvent = (req, res) => {
     console.log(req.body)
-    const title = req.body.title
-    const type = req.body.type
-    const description = req.body.description 
-    const start_time = req.body.start_time 
-    const end_time = req.body.end_time 
-    const colour = req.body.colour
-    const reminder = req.body.reminder
-    const importance = req.body.importance
-    const contacts = req.body.contacts
+    const title = req.body.title;
+    const type = req.body.type;
+    const description = req.body.description; 
+    const start_time = req.body.start_time;
+    const end_time = req.body.end_time; 
+    const colour = req.body.colour;
+    const reminder = req.body.reminder;
+    const importance = req.body.importance;
+    const contacts = req.body.contacts;
     
 
     const newEvent = new Event({
@@ -62,25 +62,37 @@ const addEvent = (req, res) => {
 //update event information 
 const updateEvent= async (req, res) => {
      try {
-    const oneEvent = await Event.findOne( {"eventId": req.params.id})
+    const oneEvent = await Event.findById(req.params.eventId);
+    const title = req.body.title ? req.body.title: oneEvent.title;
+    const type = req.body.type ? req.body.type: oneEvent.type;
+    const description = req.body.description ? req.body.description: oneEvent.description; 
+    const start_time = req.body.start_time ? req.body.start_time: oneEvent.start_time;
+    const end_time = req.body.end_time ? req.body.end_time: oneEvent.end_time; 
+    const colour = req.body.colour ? req.body.colour: oneEvent.colour;
+    console.log(oneEvent.reminder);
+    console.log(req.body.reminder);
+    const reminder = req.body.reminder ? req.body.reminder: oneEvent.reminder;
+    console.log(reminder);
+    const importance = req.body.importance ? req.body.importance: oneEvent.importance;
+    const contacts = req.body.contacts ? req.body.contacts: oneEvent.contacts;
     const update = {
-        title: req.body.title,
-        type: req.body.type,
-        description: req.body.description,
-        start_time: req.body.start_time,
-        end_time: req.body.end_time,
-        colour: req.body.colour,
-        reminder: req.body.reminder,
-        importance: req.body.importance,
-        contacts: req.body.contacts
+        title,
+        type,
+        description,
+        start_time,
+        end_time,
+        colour,
+        reminder,
+        importance,
+        contacts
     }
-    await oneEvent.updateOne(update)
-    return res.send("Updated event") // event was found and updated 
+    await oneEvent.updateOne(update);
+    return res.send("Updated event"); // event was found and updated 
     } 
     catch (err) { // error occurred
-        console.log(err)
-        res.status(400)
-        return res.send("Database query failed")
+        console.log(err);
+        res.status(400);
+        return res.send("Database query failed");
     }
 }
 

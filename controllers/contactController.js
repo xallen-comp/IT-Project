@@ -32,15 +32,15 @@ const getOneContact = async (req, res) => {
 
 //add Contact to the database
 const addContact = (req, res) => {
-    const first_name = req.body.first_name
-    const last_name = req.body.last_name
-    const comments = req.body.comments
-    const email = req.body.email
-    const occupation = req.body.occupation
-    const phone = req.body.phone
-    const events = req.body.events
-    const mutual_friends = req.body.mutual_friends
-    const photo = req.body.photo
+    const first_name = req.body.first_name;
+    const last_name = req.body.last_name;
+    const comments = req.body.comments;
+    const email = req.body.email;
+    const occupation = req.body.occupation;
+    const phone = req.body.phone;
+    const events = req.body.events;
+    const mutual_friends = req.body.mutual_friends;
+    const photo = req.body.photo;
 
     const newContact = new Contact ({
         first_name,
@@ -62,18 +62,27 @@ const addContact = (req, res) => {
 //update Contact information 
 const updateContact = async (req, res) => {
      try {
-    const oneContact = await Contact.findOne( {"contactId": req.params.id})
-    const update = {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        email: req.body.email,
-        occupation: req.body.occupation,
-        phone: req.body.phone,
-        comments: req.body.comments,
-        events: req.body.events,
-        mutual_friends: req.body.mutual_friends,
-        photo: req.body.photo
-    }
+        const oneContact = await Contact.findById(req.params.contactId);
+        const first_name = req.body.first_name ? req.body.first_name: oneContact.first_name;
+        const last_name = req.body.last_name ? req.body.last_name: oneContact.last_name;
+        const comments = req.body.comments ? req.body.comments: oneContact.comments;
+        const email = req.body.email ? req.body.email: oneContact.email;
+        const occupation = req.body.occupation ? req.body.occupation: oneContact.occupation;
+        const phone = req.body.phone ? req.body.phone: oneContact.phone;
+        const events = req.body.events ? req.body.events: oneContact.events;
+        const mutual_friends = req.body.mutual_friends ? req.body.mutual_friends: oneContact.mutual_friends;
+        const photo = req.body.photo ? req.body.photo: oneContact.photo;
+        const update = {
+            first_name,
+            last_name,
+            email,
+            occupation,
+            phone,
+            comments,
+            events,
+            mutual_friends,
+            photo,
+        }
     await oneContact.updateOne(update)
     return res.send("Updated Contact") // Contact was found and updated 
     } 
