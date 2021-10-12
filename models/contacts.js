@@ -30,8 +30,9 @@ const contactSchema = new mongoose.Schema({
         type: [String],
 	},
 	photo: {
-        type: String
-	}
+		type: String
+    }
+	
 })
 
 const Contact = mongoose.model("Contact", contactSchema)

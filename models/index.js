@@ -1,6 +1,9 @@
 //code adapted from WEBINFO
 require('dotenv').config()
 const mongoose = require("mongoose")
+const Grid = require('gridfs-stream');
+
+
 
 // Connect to MongoDB - database login is retrieved from environment variables - YOU SHOULD
 CONNECTION_STRING =
@@ -22,6 +25,7 @@ db.on("error", err => {
  process.exit(1)
 })
 
+
 db.once("open", async () => {
  console.log("Mongo connection started on " + db.host + ":" + db.port)
 })
@@ -29,3 +33,4 @@ db.once("open", async () => {
 require('./client');
 require('./event');
 require('./contacts');
+
