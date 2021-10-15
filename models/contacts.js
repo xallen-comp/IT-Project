@@ -31,7 +31,10 @@ const contactSchema = new mongoose.Schema({
 	},
 	photo: {
         type: String
-	}
+	},
+	profileImg: {
+        type: String
+    }
 })
 
 const Contact = mongoose.model("Contact", contactSchema)

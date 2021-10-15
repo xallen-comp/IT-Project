@@ -1,12 +1,14 @@
-const express = require('express')
+const express = require('express');
 
 // add Contact router 
 const contactRouter = express.Router()
 const contactController = require('../controllers/contactController')
 
+
 //CREATE ----------------------------------------------------------
 
 contactRouter.post('/add', contactController.addContact);
+contactRouter.post('/upload', contactController.uploadImage);
 
 //READ ------------------------------------------------------------
 
