@@ -12,18 +12,18 @@ commentRouter.post('/add', commentController.addComment);
 
 commentRouter.get('/', commentController.getAllComments);
 
-commentRouter.get('/:contact_Id', commentController.getAllComments);
+commentRouter.get('/:contactId', commentController.getContactsComments);
 
-commentRouter.get('/:contactId', commentController.getOneComment);
+commentRouter.get('/oneComment/:contactID', commentController.getOneComment);
 
 //UPDATE ----------------------------------------------------------
 
-commentRouter.post('/:contactId/update', commentController.updateComment)
+commentRouter.post('/:commentId/update', commentController.updateComment)
 
 
 //DELETE ----------------------------------------------------------
 
-commentRouter.post('/:contactId/delete', commentController.deleteComment)
+commentRouter.post('/:commentId/delete', commentController.deleteComment)
 
 
 

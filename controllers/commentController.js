@@ -26,10 +26,12 @@ const addComment = (req, res) => {
 
 const getContactsComments = async (req, res) => {
     try {
-        const comments = await Comments.find( {"contact_id": req.params.contact_id } )
+        const comments = await Comments.filter( {"contact_id": req.params.contactId } )
+        console.log("Getting all comments");
         return res.send(comments)
     } catch (err) {
-        res.status(400)
+        res.status(404)
+        console.log(req.params.contactId);
         return res.send("Database query failed")
     }
 }
