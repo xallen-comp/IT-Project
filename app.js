@@ -13,15 +13,20 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(methodOverride('_method'));
 require('./models');
+require("./models/comments");
+
 
 
 const contactRouter = require('./routes/contactRouter');
 const eventRouter = require('./routes/eventRouter');
+const commentRouter = require('./routes/commentRouter');
 
 // handler for clients
 app.use('/contacts', contactRouter);
 // handler for events
 app.use('/events', eventRouter);
+// handler for comments
+app.use('/comments', commentRouter);
 
 app.get('/', (req, res) =>{
 	res.send('<h1>Website</h1>');

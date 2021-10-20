@@ -13,7 +13,7 @@ const getAllEvents = async (req, res) => {
  }
 }
 
-// find one client by their id
+// find one event by their id
 const getOneEvent = async (req, res) => {
  try {
  const oneEvent = await Event.findById(req.params.eventId);
