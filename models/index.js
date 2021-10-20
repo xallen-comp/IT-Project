@@ -1,7 +1,6 @@
 //code adapted from WEBINFO
 require('dotenv').config()
-const mongoose = require("mongoose")
-
+const mongoose = require("mongoose");
 // Connect to MongoDB - database login is retrieved from environment variables - YOU SHOULD
 CONNECTION_STRING =
 "mongodb+srv://<username>:<password>@it-project.8k0gl.mongodb.net/test"
@@ -15,16 +14,17 @@ mongoose.connect(MONGO_URL || "mongodb://localhost", {
  dbName: "IT-Project-Database"
 })
 
-const db = mongoose.connection
 
+const db = mongoose.connection
 db.on("error", err => {
  console.error(err);
  process.exit(1)
 })
 
 db.once("open", async () => {
- console.log("Mongo connection started on " + db.host + ":" + db.port)
+	console.log("Mongo connection started on " + db.host + ":" + db.port);
 })
+
 
 require('./client');
 require('./event');
