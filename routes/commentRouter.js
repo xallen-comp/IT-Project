@@ -23,7 +23,7 @@ commentRouter.post('/:commentId/update', commentController.updateComment)
 
 //DELETE ----------------------------------------------------------
 
-commentRouter.post('/:commentId/delete', commentController.deleteComment)
+commentRouter.delete('/:commentId/delete', commentController.deleteComment)
 
 
 
