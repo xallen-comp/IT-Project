@@ -1,6 +1,7 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 // import Contact model
-const Contact = mongoose.model("Contact")
+const Contact = mongoose.model("Contact");
+const upload = require('../middleware/upload.js');
 
 // get all Contacts
 const getAllContacts = async (req, res) => {
@@ -30,10 +31,25 @@ const getOneContact = async (req, res) => {
  }
 }
 
+const uploadImage = async(req, res) =>{
+    try{
+        await upload(req, res);
+       console.log(req.file);
+        if (req.file == undefined) {
+            return res.send(`You must select a file.`);
+        }
+
+        return res.send(`File has been uploaded.`);
+    } 
+  catch (error) {
+    console.log(error);
+    return res.send(`Error when trying upload image: ${error}`);
+  }
+}
 //add Contact to the database
 const addContact = (req, res) => {
-    const first_name = req.body.first_name;
-    const last_name = req.body.last_name;
+    const first_name = req.first_name;
+    const last_name = req.last_name;
     const comments = req.body.comments;
     const email = req.body.email;
     const occupation = req.body.occupation;
@@ -41,7 +57,6 @@ const addContact = (req, res) => {
     const events = req.body.events;
     const mutual_friends = req.body.mutual_friends;
     const photo = req.body.photo;
-
     const newContact = new Contact ({
         first_name,
         last_name,
@@ -51,7 +66,7 @@ const addContact = (req, res) => {
         comments,
         events,
         mutual_friends,
-        photo,
+        photo
     });
 
     newContact.save()
@@ -116,5 +131,6 @@ module.exports = {
  getOneContact,
  addContact,
  updateContact,
- deleteContact
+ deleteContact,
+ uploadImage
 }

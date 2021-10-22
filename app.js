@@ -8,10 +8,13 @@ const cors = require('cors')
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 app.use(bodyParser.json());
 app.use(cors());
+app.use(methodOverride('_method'));
 require('./models');
 require("./models/comments");
+
 
 
 const contactRouter = require('./routes/contactRouter');
