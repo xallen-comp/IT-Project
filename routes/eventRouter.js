@@ -19,7 +19,7 @@ eventRouter.post('/:eventId/update', eventController.updateEvent);
 
 //DELETE ----------------------------------------------------------
 
-
+eventRouter.delete('/:eventId/delete', eventController.deleteEvent)
 
 // export the router
 module.exports = eventRouter

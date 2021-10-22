@@ -20,7 +20,7 @@ contactRouter.post('/:contactId/update', contactController.updateContact)
 
 //DELETE ----------------------------------------------------------
 
-
+contactRouter.delete('/:contactId/delete', contactController.deleteContact)
 
 
 
