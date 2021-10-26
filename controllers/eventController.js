@@ -96,10 +96,24 @@ const updateEvent= async (req, res) => {
     }
 }
 
+//delete event
+const deleteEvent = async (req, res) => {
+    try {
+       const oneEvent = await Event.findByIdAndDelete(req.params.eventId);
+   return res.send("Deleted Event") // Event was found and deleted 
+   } 
+   catch (err) { // error occurred
+       console.log(err)
+       res.status(400)
+       return res.send("Database query failed")
+   }
+}
+
 // exporting the functions
 module.exports = {
  getAllEvents,
  getOneEvent,
  addEvent,
- updateEvent
+ updateEvent,
+ deleteEvent
 }
