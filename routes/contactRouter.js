@@ -22,9 +22,7 @@ contactRouter.post('/:contactId/update', contactController.updateContact)
 
 //DELETE ----------------------------------------------------------
 
-
-
-
+contactRouter.post('/:contactId/delete', contactController.deleteContact)
 
 // export the router
 module.exports = contactRouter

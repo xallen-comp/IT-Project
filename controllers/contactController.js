@@ -108,11 +108,25 @@ const updateContact = async (req, res) => {
     }
 }
 
+//delete contact
+const deleteContact = async (req, res) => {
+    try {
+       const oneClient = await Client.findByIdAndDelete(req.params.clientId);
+   return res.send("Deleted Client") // Event was found and deleted 
+   } 
+   catch (err) { // error occurred
+       console.log(err)
+       res.status(400)
+       return res.send("Database query failed")
+   }
+}
+
 // exporting the functions
 module.exports = {
  getAllContacts,
  getOneContact,
  addContact,
  updateContact,
- uploadImage
+ uploadImage,
+ deleteContact
 }

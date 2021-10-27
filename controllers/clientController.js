@@ -68,6 +68,7 @@ const updateClient = async (req, res) => {
     }
 }
 
+
 // exporting the functions
 module.exports = {
  getAllClients,
