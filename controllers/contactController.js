@@ -79,8 +79,8 @@ const uploadImage = async(req, res) =>{
 }
 //add Contact to the database
 const addContact = (req, res) => {
-    const first_name = req.first_name;
-    const last_name = req.last_name;
+    const first_name = req.body.first_name;
+    const last_name = req.body.last_name;
     const comments = req.body.comments;
     const email = req.body.email;
     const occupation = req.body.occupation;
