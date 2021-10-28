@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 // import Contact model
 const Contact = mongoose.model("Contact");
 const upload = require('../middleware/upload.js');
-
+//adapted send image from https://www.freecodecamp.org/news/gridfs-making-file-uploading-to-mongodb/
 
 //gridfs connection 
 CONNECTION_STRING =
@@ -52,6 +52,7 @@ const getImage = async(req, res) => {
             return res.send('Not in database');
         }
         else{
+            console.log(files[0]._id);
             gfs.openDownloadStreamByName(files[0].filename).pipe(res);
         }
     });
@@ -62,7 +63,26 @@ const getImage = async(req, res) => {
     }
 }
 
-const uploadImage = async(req, res) =>{
+//delete image from database
+const deleteFile = async(req, res) => {
+    try{
+    gfs.find({filename: req.body.filename}).toArray((err, files) => {
+        if(!files[0] || files.length === 0){
+            return res.send('Not in database');
+        }
+        else{
+            gfs.delete(files[0]._id);
+            return res.send("Deleted");
+        }
+    });
+    }
+    catch(error){
+        console.log(error);
+        return res.send(`Error when trying to fetch file: ${error}`);
+    }
+}
+
+const uploadFile = async(req, res) =>{
     try{
         await upload(req, res);
        console.log(req.file);
@@ -74,7 +94,7 @@ const uploadImage = async(req, res) =>{
     } 
   catch (error) {
     console.log(error);
-    return res.send(`Error when trying upload image: ${error}`);
+    return res.send(`Error when trying upload file: ${error}`);
   }
 }
 //add Contact to the database
@@ -158,7 +178,8 @@ module.exports = {
  getOneContact,
  addContact,
  updateContact,
- uploadImage,
+ uploadFile,
  deleteContact,
- getImage
+ getImage,
+ deleteFile
 }

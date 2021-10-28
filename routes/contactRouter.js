@@ -8,8 +8,9 @@ const contactController = require('../controllers/contactController')
 //CREATE ----------------------------------------------------------
 
 contactRouter.post('/add', contactController.addContact);
-contactRouter.post('/upload', contactController.uploadImage);
+contactRouter.post('/upload', contactController.uploadFile);
 contactRouter.post('/fetch', contactController.getImage);
+contactRouter.post('/delete', contactController.deleteFile);
 //READ ------------------------------------------------------------
 
 contactRouter.get('/', contactController.getAllContacts);
