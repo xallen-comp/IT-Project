@@ -12,9 +12,11 @@ const storage = GridFsStorage({
     url: MONGO_URL,
     options: { useNewUrlParser: true, useUnifiedTopology: true },
     file: (req, file) => {
-        const match = ["image/png", "image/jpeg"];
-
+        const match = ["image/png", "image/jpeg", "application/octet-stream", "application/pdf", 
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.ms-excel"];
+        console.log(file.mimetype);
         if (match.indexOf(file.mimetype) === -1) {
+        console.log("check");
         const filename = `${file.originalname}`;
         return filename;
     }
