@@ -3,6 +3,18 @@ const mongoose = require("mongoose");
 const Contact = mongoose.model("Contact");
 const upload = require('../middleware/upload.js');
 
+
+//gridfs connection 
+CONNECTION_STRING =
+"mongodb+srv://<username>:<password>@it-project.8k0gl.mongodb.net/test"
+MONGO_URL =
+CONNECTION_STRING.replace("<username>",process.env.MONGO_USERNAME).replace("<password>",process.env.MONGO_PASSWORD)
+const url = MONGO_URL;
+const connect = mongoose.createConnection(url, {useNewUrlParser: true, useUnifiedTopology: true});
+var gfs;
+connect.once('open', () => {
+    gfs = new mongoose.mongo.GridFSBucket(connect.db, {bucketName: "photos"});
+});
 // get all Contacts
 const getAllContacts = async (req, res) => {
  try {
@@ -29,6 +41,25 @@ const getOneContact = async (req, res) => {
     console.log(err);
     return res.send("Database query failed")
  }
+}
+
+
+//get image from database
+const getImage = async(req, res) => {
+    try{
+    gfs.find({filename: req.body.filename}).toArray((err, files) => {
+        if(!files[0] || files.length === 0){
+            return res.send('Not in database');
+        }
+        else{
+            gfs.openDownloadStreamByName(files[0].filename).pipe(res);
+        }
+    });
+    }
+    catch(error){
+        console.log(error);
+        return res.send(`Error when trying to fetch image: ${error}`);
+    }
 }
 
 const uploadImage = async(req, res) =>{
@@ -128,5 +159,6 @@ module.exports = {
  addContact,
  updateContact,
  uploadImage,
- deleteContact
+ deleteContact,
+ getImage
 }

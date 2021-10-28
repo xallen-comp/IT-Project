@@ -9,7 +9,7 @@ const contactController = require('../controllers/contactController')
 
 contactRouter.post('/add', contactController.addContact);
 contactRouter.post('/upload', contactController.uploadImage);
-
+contactRouter.post('/fetch', contactController.getImage);
 //READ ------------------------------------------------------------
 
 contactRouter.get('/', contactController.getAllContacts);
