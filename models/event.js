@@ -29,7 +29,7 @@ const eventSchema = new mongoose.Schema({
     },
 	importance: {
         type: String,
-		enum: ['Low', 'Medium', 'High'],
+		enum: ['Very Low','Low', 'Medium', 'High','Very High'],		
 		default: 'Medium'
     },
 	contacts: {
