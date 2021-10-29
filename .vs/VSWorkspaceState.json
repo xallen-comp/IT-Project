@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\controllers",
+    "\\middleware",
     "\\models",
     "\\routes"
   ],
-  "SelectedNode": "\\models\\index.js",
+  "SelectedNode": "\\controllers\\contactController.js",
   "PreviewInSolutionExplorer": false
 }

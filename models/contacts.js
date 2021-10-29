@@ -32,7 +32,7 @@ const contactSchema = new mongoose.Schema({
 	photo: {
         type: String
 	},
-	profileImg: {
+	file: {
         type: String
     }
 })

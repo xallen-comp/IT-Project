@@ -85,12 +85,11 @@ const deleteFile = async(req, res) => {
 const uploadFile = async(req, res) =>{
     try{
         await upload(req, res);
-       console.log(req.file);
         if (req.file == undefined) {
             return res.send(`You must select a file.`);
         }
 
-        return res.send(`File has been uploaded.`);
+        return res.send(req.file);
     } 
   catch (error) {
     console.log(error);
@@ -108,6 +107,7 @@ const addContact = (req, res) => {
     const events = req.body.events;
     const mutual_friends = req.body.mutual_friends;
     const photo = req.body.photo;
+    const file = req.body.file;
     const newContact = new Contact ({
         first_name,
         last_name,
@@ -117,7 +117,8 @@ const addContact = (req, res) => {
         comments,
         events,
         mutual_friends,
-        photo
+        photo,
+        file
     });
 
     newContact.save()
@@ -138,6 +139,7 @@ const updateContact = async (req, res) => {
         const events = req.body.events ? req.body.events: oneContact.events;
         const mutual_friends = req.body.mutual_friends ? req.body.mutual_friends: oneContact.mutual_friends;
         const photo = req.body.photo ? req.body.photo: oneContact.photo;
+        const file =  req.body.file ? req.body.file: oneContact.file;
         const update = {
             first_name,
             last_name,
@@ -148,6 +150,7 @@ const updateContact = async (req, res) => {
             events,
             mutual_friends,
             photo,
+            file
         }
     await oneContact.updateOne(update)
     return res.send("Updated Contact") // Contact was found and updated 
