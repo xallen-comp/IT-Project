@@ -12,6 +12,7 @@ eventRouter.post('/add', eventController.addEvent);
 
 eventRouter.get('/', eventController.getAllEvents);
 eventRouter.get('/:eventId', eventController.getOneEvent);
+eventRouter.post('/getreminders', eventController.getReminders);
 
 //UPDATE ----------------------------------------------------------
 

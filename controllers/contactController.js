@@ -175,6 +175,8 @@ const deleteContact = async (req, res) => {
    }
 }
 
+
+
 // exporting the functions
 module.exports = {
  getAllContacts,

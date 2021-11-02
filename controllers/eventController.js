@@ -5,8 +5,27 @@ const Event = mongoose.model("Event")
 // get all clients
 const getAllEvents = async (req, res) => {
  try {
- const events = await Event.find()
+ const events = await Event.find();
  return res.send(events)
+ } catch (err) {
+ res.status(400)
+ return res.send("Database query failed")
+ }
+}
+
+
+// get events that need a reminder to be sent 
+const getReminders = async (req, res) => {
+ try {
+    const events = await Event.find();
+    let reminders = [];
+    for (let index in events){
+        if(events[index].start_time - (new Date(req.body.now)) <= events[index].reminder *60000){
+            reminders.push(events[index]);
+        }
+
+    }
+    return res.send(reminders);
  } catch (err) {
  res.status(400)
  return res.send("Database query failed")
@@ -115,5 +134,6 @@ module.exports = {
  getOneEvent,
  addEvent,
  updateEvent,
- deleteEvent
+ deleteEvent,
+ getReminders
 }
