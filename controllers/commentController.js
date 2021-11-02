@@ -73,9 +73,7 @@ const getOneComment = async (req, res) => {
 //delete Comment 
 const deleteComment = async (req, res) => {
     try {
-       const oneComment = await Comment.findById(req.params.commentId);
-       const comment_body = req.body.comment_body ? req.body.comment_body: oneComment.comment_body;
-   await oneComment.remove(justOne)
+       const oneComment = await Comment.findByIdAndRemove(req.params.commentId);
    return res.send("Deleted Comment") // Comment was found and deleted 
    } 
    catch (err) { // error occurred

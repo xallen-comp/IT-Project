@@ -128,6 +128,7 @@ const deleteEvent = async (req, res) => {
    }
 }
 
+
 // exporting the functions
 module.exports = {
  getAllEvents,

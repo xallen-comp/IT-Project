@@ -162,11 +162,12 @@ const updateContact = async (req, res) => {
     }
 }
 
-//delete contact
+
 const deleteContact = async (req, res) => {
+    console.log(req.params.contactId)
     try {
-       const oneClient = await Client.findByIdAndDelete(req.params.clientId);
-   return res.send("Deleted Client") // Event was found and deleted 
+       const oneContact = await Contact.findByIdAndRemove(req.params.contactId);
+       return res.send("Deleted Contact") // Contact was found and deleted 
    } 
    catch (err) { // error occurred
        console.log(err)
@@ -174,6 +175,7 @@ const deleteContact = async (req, res) => {
        return res.send("Database query failed")
    }
 }
+
 
 
 
