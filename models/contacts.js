@@ -1,7 +1,6 @@
 const mongoose = require("mongoose")
 
 const contactSchema = new mongoose.Schema({
-	//contactId: String,
 	first_name: {
         type: String,
 		required: true,
@@ -34,7 +33,10 @@ const contactSchema = new mongoose.Schema({
 	},
 	file: {
         type: String
-    }
+    },
+	contact_type: {
+		type: String
+	}
 })
 
 const Contact = mongoose.model("Contact", contactSchema)

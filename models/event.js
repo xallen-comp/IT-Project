@@ -24,7 +24,7 @@ const eventSchema = new mongoose.Schema({
 		default: 'Red',
     },
 	reminder: {
-        type: Number,
+        type: [Number],
 		default: 30,
     },
 	importance: {

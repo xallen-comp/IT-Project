@@ -108,6 +108,7 @@ const addContact = (req, res) => {
     const mutual_friends = req.body.mutual_friends;
     const photo = req.body.photo;
     const file = req.body.file;
+    const contact_type = req.body.contact_type;
     const newContact = new Contact ({
         first_name,
         last_name,
@@ -118,7 +119,8 @@ const addContact = (req, res) => {
         events,
         mutual_friends,
         photo,
-        file
+        file,
+        contact_type
     });
 
     newContact.save()
@@ -140,6 +142,7 @@ const updateContact = async (req, res) => {
         const mutual_friends = req.body.mutual_friends ? req.body.mutual_friends: oneContact.mutual_friends;
         const photo = req.body.photo ? req.body.photo: oneContact.photo;
         const file =  req.body.file ? req.body.file: oneContact.file;
+        const contact_type =  req.body.contact_type ? req.body.contact_type : oneContact.contact_type;
         const update = {
             first_name,
             last_name,
@@ -150,7 +153,8 @@ const updateContact = async (req, res) => {
             events,
             mutual_friends,
             photo,
-            file
+            file,
+            contact_type
         }
     await oneContact.updateOne(update)
     return res.send("Updated Contact") // Contact was found and updated 

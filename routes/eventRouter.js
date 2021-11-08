@@ -20,7 +20,8 @@ eventRouter.post('/:eventId/update', eventController.updateEvent);
 
 //DELETE ----------------------------------------------------------
 
-eventRouter.post('/:eventId/delete', eventController.deleteEvent)
+eventRouter.post('/:eventId/delete', eventController.deleteEvent);
+eventRouter.post('/:eventId/deleteReminder', eventController.deleteReminder);
 
 // export the router
 module.exports = eventRouter

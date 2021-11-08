@@ -13,6 +13,25 @@ const getAllEvents = async (req, res) => {
  }
 }
 
+//delete specific reminder
+const deleteReminder = async (req, res) => {
+    try {
+    const oneEvent = await Event.findById(req.params.eventId);
+    if (oneEvent === null) { // no client found in database
+    res.status(404)
+    return res.send("Event not found")
+ }
+    const index = oneEvent.reminder.indexOf(req.body.reminder);
+    if(index > -1){
+        oneEvent.reminder.splice(index, 1);
+    }
+    return res.send(oneEvent) // client was found
+ } 
+ catch (err) { // error occurred
+    res.status(400)
+    return res.send("Database query failed")
+ }
+}
 
 // get events that need a reminder to be sent 
 const getReminders = async (req, res) => {
@@ -20,10 +39,11 @@ const getReminders = async (req, res) => {
     const events = await Event.find();
     let reminders = [];
     for (let index in events){
-        if(events[index].start_time - (new Date(req.body.now)) <= events[index].reminder *60000){
-            reminders.push(events[index]);
+        for (let index2 in events[index].reminder){
+            if(events[index].start_time - (new Date(req.body.now)) <= events[index].reminder[index2] *60000){
+                reminders.push(events[index]);
+            }
         }
-
     }
     return res.send(reminders);
  } catch (err) {
@@ -88,10 +108,7 @@ const updateEvent= async (req, res) => {
     const start_time = req.body.start_time ? req.body.start_time: oneEvent.start_time;
     const end_time = req.body.end_time ? req.body.end_time: oneEvent.end_time; 
     const colour = req.body.colour ? req.body.colour: oneEvent.colour;
-    console.log(oneEvent.reminder);
-    console.log(req.body.reminder);
     const reminder = req.body.reminder ? req.body.reminder: oneEvent.reminder;
-    console.log(reminder);
     const importance = req.body.importance ? req.body.importance: oneEvent.importance;
     const contacts = req.body.contacts ? req.body.contacts: oneEvent.contacts;
     const update = {
@@ -136,5 +153,6 @@ module.exports = {
  addEvent,
  updateEvent,
  deleteEvent,
- getReminders
+ getReminders,
+ deleteReminder
 }
