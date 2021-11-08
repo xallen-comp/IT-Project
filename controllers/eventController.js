@@ -25,6 +25,7 @@ const deleteReminder = async (req, res) => {
     if(index > -1){
         oneEvent.reminder.splice(index, 1);
     }
+    await oneEvent.updateOne(oneEvent);
     return res.send(oneEvent) // client was found
  } 
  catch (err) { // error occurred
