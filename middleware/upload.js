@@ -17,13 +17,13 @@ const storage = GridFsStorage({
         console.log(file.mimetype);
         if (match.indexOf(file.mimetype) === -1) {
         console.log("check");
-        const filename = `${file.originalname}`;
+        const filename = `${Date.now()}-${file.originalname}`;
         return filename;
     }
 
     return {
       bucketName: "photos",
-      filename: `${file.originalname}`
+      filename: `${Date.now()}-${file.originalname}`
     };
   }
 });
