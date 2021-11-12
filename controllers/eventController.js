@@ -41,7 +41,7 @@ const getReminders = async (req, res) => {
     let reminders = [];
     for (let index in events){
         for (let index2 in events[index].reminder){
-            if(events[index].start_time - (new Date(req.body.now)) <= events[index].reminder[index2] *60000){
+            if((Date.parse(events[index].start_time) - req.body.now) <= events[index].reminder[index2] *60000){
                 let obj = {"_id": events[index]._id, "title": events[index].title, "reminder": events[index].reminder[index2]};
                 reminders.push(obj);
             }
