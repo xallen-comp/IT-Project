@@ -41,7 +41,9 @@ console.log(req);
     const events = await Event.find();
     let reminders = [];
     for(index in events){
-        reminders.push(events[index]);
+        for(index2 in events.reminder){
+            reminders.push(events[index]);
+        }
     }
     return res.send(reminders);
  } catch (err) {
