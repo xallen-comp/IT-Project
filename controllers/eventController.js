@@ -36,12 +36,11 @@ const deleteReminder = async (req, res) => {
 
 // get events that need a reminder to be sent 
 const getReminders = async (req, res) => {
-console.log(req);
  try {
     const events = await Event.find();
     let reminders = [];
     for(index in events){
-        for(index2 in events.reminder){
+        for(index2 in events[index].reminder){
             reminders.push(events[index]);
         }
     }
