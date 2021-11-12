@@ -41,8 +41,9 @@ const getReminders = async (req, res) => {
     let reminders = [];
     for(index in events){
         for(index2 in events[index].reminder){
-            if((new Date(events[index].start_time)).getTime() - Date.now() > 0){
-                console.log((new Date(events[index].start_time)).getTime());
+            console.log(events[index].time);
+            if(events[index].time - Date.now() > 0){
+                console.log(events[index].time);
                 let obj = {"title": events[index].title, "_id": events[index]._id, "reminder": events[index].reminder};
                 reminders.push(obj);
             }
@@ -95,7 +96,8 @@ const addEvent = (req, res) => {
         colour,
         reminder,
         importance,
-        contacts
+        contacts,
+        time
     });
 
     newEvent.save()
