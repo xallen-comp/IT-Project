@@ -13,7 +13,8 @@ const storage = GridFsStorage({
     options: { useNewUrlParser: true, useUnifiedTopology: true },
     file: (req, file) => {
         const match = ["image/png", "image/jpeg", "application/octet-stream", "application/pdf", 
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.ms-excel"];
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.ms-excel", 
+        "application/vnd.ms-powerpoint"];
         console.log(file.mimetype);
         if (match.indexOf(file.mimetype) === -1) {
         console.log("check");
