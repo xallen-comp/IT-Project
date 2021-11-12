@@ -36,6 +36,9 @@ const eventSchema = new mongoose.Schema({
        // type: [Contact.contactSchema]
 	   type: [String]
     },
+	time: {
+		type: Date
+	}
 })
 
 const Event = mongoose.model("Event", eventSchema)

@@ -83,6 +83,7 @@ const addEvent = (req, res) => {
     const reminder = req.body.reminder;
     const importance = req.body.importance;
     const contacts = req.body.contacts;
+    const time = req.body.time;
     
 
     const newEvent = new Event({
@@ -115,6 +116,7 @@ const updateEvent= async (req, res) => {
     const reminder = req.body.reminder ? req.body.reminder: oneEvent.reminder;
     const importance = req.body.importance ? req.body.importance: oneEvent.importance;
     const contacts = req.body.contacts ? req.body.contacts: oneEvent.contacts;
+    const time = req.body.time ? req.body.time: oneEvent.time;
     const update = {
         title,
         type,
@@ -124,7 +126,8 @@ const updateEvent= async (req, res) => {
         colour,
         reminder,
         importance,
-        contacts
+        contacts,
+        time
     }
     await oneEvent.updateOne(update);
     return res.send("Updated event"); // event was found and updated 
