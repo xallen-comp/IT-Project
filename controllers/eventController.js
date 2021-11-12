@@ -40,7 +40,10 @@ console.log(req);
  try {
     const events = await Event.find();
     let reminders = [];
-    return res.send(events);
+    for(index in events){
+        reminders.push(events[index]);
+    }
+    return res.send(reminders);
  } catch (err) {
  res.status(400)
  return res.send("Database query failed")
