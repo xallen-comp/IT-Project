@@ -40,15 +40,7 @@ console.log(req);
  try {
     const events = await Event.find();
     let reminders = [];
-    for (let index in events){
-        for (let index2 in events[index].reminder){
-            if((Date.parse(events[index].start_time) - req.body.now) <= events[index].reminder[index2] *60000){
-                let obj = {"_id": events[index]._id, "title": events[index].title, "reminder": events[index].reminder[index2]};
-                reminders.push(obj);
-            }
-        }
-    }
-    return res.send(reminders);
+    return res.send(events);
  } catch (err) {
  res.status(400)
  return res.send("Database query failed")
